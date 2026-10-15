@@ -1,0 +1,12 @@
+# Python virtual environment
+scraper/.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# macOS files
+.DS_Store
+
+# Scraper diagnostic screenshot
+scraper/access_check.png

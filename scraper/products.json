@@ -1,0 +1,962 @@
+[
+  {
+    "brand": "BALENCIAGA",
+    "name": "Black High Collar Soft Matte Leather Jacket",
+    "displayed_price": 8350.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/balenciaga/black-high-collar-soft-matte-leather-jacket/17198721",
+    "scraped_at": "2026-10-15T17:55:59.045880+00:00"
+  },
+  {
+    "brand": "THOM BROWNE",
+    "name": "Gray High Twist Wool Funmix Cropped Tailored Parka",
+    "displayed_price": 5850.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/thom-browne/gray-high-twist-wool-funmix-cropped-tailored-parka/19718701",
+    "scraped_at": "2026-10-15T17:55:59.048413+00:00"
+  },
+  {
+    "brand": "THOM BROWNE",
+    "name": "Navy Classic Loopback 4-Bar Zip Hoodie",
+    "displayed_price": 1050.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/thom-browne/navy-classic-loopback-4-bar-zip-hoodie/546166172",
+    "scraped_at": "2026-10-15T17:55:59.050259+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Brown Glazed Curve Denim Jacket",
+    "displayed_price": 795.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/brown-glazed-curve-denim-jacket/19588741",
+    "scraped_at": "2026-10-15T17:55:59.051901+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Brown Glazed Flex Denim Jacket",
+    "displayed_price": 840.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/brown-glazed-flex-denim-jacket/19588701",
+    "scraped_at": "2026-10-15T17:55:59.053811+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Black Oversized Jacquard Longsleeve Sweater",
+    "displayed_price": 495.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/black-oversized-jacquard-longsleeve-sweater/19587191",
+    "scraped_at": "2026-10-15T17:55:59.055536+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Brown Glazed Baggy Jeans",
+    "displayed_price": 605.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/brown-glazed-baggy-jeans/19588261",
+    "scraped_at": "2026-10-15T17:55:59.057313+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Brown Glazed Curve Jeans",
+    "displayed_price": 690.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/brown-glazed-curve-jeans/19588231",
+    "scraped_at": "2026-10-15T17:55:59.058892+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Blue Glazed Curve Jeans",
+    "displayed_price": 690.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/blue-glazed-curve-jeans/19588211",
+    "scraped_at": "2026-10-15T17:55:59.060580+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Black Jacquard Maxi Dress",
+    "displayed_price": 1080.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/black-jacquard-maxi-dress/19588121",
+    "scraped_at": "2026-10-15T17:55:59.062287+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Black Jacquard Team Minidress",
+    "displayed_price": 425.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/black-jacquard-team-minidress/19587441",
+    "scraped_at": "2026-10-15T17:55:59.063916+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Black Knit Strappy Longsleeve T-shirt",
+    "displayed_price": 415.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/black-knit-strappy-longsleeve-t-shirt/19587311",
+    "scraped_at": "2026-10-15T17:55:59.066032+00:00"
+  },
+  {
+    "brand": "OTTOLINGER",
+    "name": "Burgundy Knit Strappy Longsleeve T-shirt",
+    "displayed_price": 415.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ottolinger/burgundy-knit-strappy-longsleeve-t-shirt/19587301",
+    "scraped_at": "2026-10-15T17:55:59.067748+00:00"
+  },
+  {
+    "brand": "VETEMENTS",
+    "name": "Beige Round Shoulder Open Back Trench Coat",
+    "displayed_price": 2515.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/vetements/beige-round-shoulder-open-back-trench-coat/19673671",
+    "scraped_at": "2026-10-15T17:55:59.069435+00:00"
+  },
+  {
+    "brand": "VETEMENTS",
+    "name": "Beige Open Back Trench Midi Skirt",
+    "displayed_price": 1060.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/vetements/beige-open-back-trench-midi-skirt/19673791",
+    "scraped_at": "2026-10-15T17:55:59.071139+00:00"
+  },
+  {
+    "brand": "KIKO KOSTADINOV",
+    "name": "Khaki & Gold Kestrel Minidress",
+    "displayed_price": 1310.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/kiko-kostadinov/khaki-and-gold-kestrel-minidress/19752271",
+    "scraped_at": "2026-10-15T17:55:59.072873+00:00"
+  },
+  {
+    "brand": "KNWLS",
+    "name": "Beige Astra Jeans",
+    "displayed_price": 505.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/charlotte-knowles/beige-astra-jeans/19412091",
+    "scraped_at": "2026-10-15T17:55:59.074438+00:00"
+  },
+  {
+    "brand": "GIMAGUAS",
+    "name": "Blue Ruben Shirt",
+    "displayed_price": 205.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/gimaguas/blue-ruben-shirt/19513811",
+    "scraped_at": "2026-10-15T17:55:59.075983+00:00"
+  },
+  {
+    "brand": "FEAR OF GOD",
+    "name": "Beige Relaxed Coat",
+    "displayed_price": 2995.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/fear-of-god/beige-relaxed-coat/14799791",
+    "scraped_at": "2026-10-15T17:55:59.077514+00:00"
+  },
+  {
+    "brand": "FEAR OF GOD",
+    "name": "Blue Relaxed Five Pocket Jeans",
+    "displayed_price": 795.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/fear-of-god/blue-relaxed-five-pocket-jeans/16433921",
+    "scraped_at": "2026-10-15T17:55:59.079126+00:00"
+  },
+  {
+    "brand": "COMME DES GARÇONS GIRL",
+    "name": "Navy Wool Nylon Melton Coat",
+    "displayed_price": 1750.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/comme-des-garcons-girl/navy-wool-nylon-melton-coat/19699351",
+    "scraped_at": "2026-10-15T17:55:59.080701+00:00"
+  },
+  {
+    "brand": "LAUREN MANOOGIAN",
+    "name": "Brown Lano Hip Midi Skirt",
+    "displayed_price": 990.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lauren-manoogian/brown-lano-hip-midi-skirt/19693711",
+    "scraped_at": "2026-10-15T17:55:59.082299+00:00"
+  },
+  {
+    "brand": "AMI PARIS",
+    "name": "Navy & Off-White Sailor Striped Wool Crewneck Sweater",
+    "displayed_price": 680.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ami-alexandre-mattiussi/navy-and-off-white-sailor-striped-wool-crewneck-sweater/19548271",
+    "scraped_at": "2026-10-15T17:55:59.084173+00:00"
+  },
+  {
+    "brand": "DUNST",
+    "name": "Navy Essential Slim Checked Shirt",
+    "displayed_price": 115.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/dunst/navy-essential-slim-checked-shirt/19409871",
+    "scraped_at": "2026-10-15T17:55:59.085789+00:00"
+  },
+  {
+    "brand": "DIESEL",
+    "name": "Black Fitted Dirty-Effect Denim Trucker Jacket",
+    "displayed_price": 595.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/diesel/black-fitted-dirty-effect-denim-trucker-jacket/19752841",
+    "scraped_at": "2026-10-15T17:55:59.087499+00:00"
+  },
+  {
+    "brand": "DIESEL",
+    "name": "Blue Button-Neck Wrinkled Boiled Knit Turtleneck",
+    "displayed_price": 770.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/diesel/blue-button-neck-wrinkled-boiled-knit-turtleneck/19688781",
+    "scraped_at": "2026-10-15T17:55:59.089300+00:00"
+  },
+  {
+    "brand": "DIESEL",
+    "name": "Blue Knitted Floral Motif Jumpsuit",
+    "displayed_price": 1580.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/diesel/blue-knitted-floral-motif-jumpsuit/19689001",
+    "scraped_at": "2026-10-15T17:55:59.090977+00:00"
+  },
+  {
+    "brand": "DIESEL",
+    "name": "Tan Wrinkled Boiled Knit Cardigan Minidress",
+    "displayed_price": 845.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/diesel/tan-wrinkled-boiled-knit-cardigan-minidress/19688951",
+    "scraped_at": "2026-10-15T17:55:59.092665+00:00"
+  },
+  {
+    "brand": "DIESEL",
+    "name": "Blue Velvet Shirt",
+    "displayed_price": 875.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/diesel/blue-velvet-shirt/19688961",
+    "scraped_at": "2026-10-15T17:55:59.094242+00:00"
+  },
+  {
+    "brand": "DIESEL",
+    "name": "Brown De-Dasli-Fsj1 Denim Midi Skirt",
+    "displayed_price": 695.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/diesel/brown-de-dasli-fsj1-denim-midi-skirt/19756641",
+    "scraped_at": "2026-10-15T17:55:59.095797+00:00"
+  },
+  {
+    "brand": "MONCLER",
+    "name": "Black Contemplatif Parka",
+    "displayed_price": 3250.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/moncler/black-contemplatif-parka/19412971",
+    "scraped_at": "2026-10-15T17:55:59.097403+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Black Olmo Wool Short Coat",
+    "displayed_price": 1100.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/black-olmo-wool-short-coat/19500301",
+    "scraped_at": "2026-10-15T17:55:59.098999+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Black Irvin Long Wool Coat",
+    "displayed_price": 920.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/black-irvin-long-wool-coat/19500331",
+    "scraped_at": "2026-10-15T17:55:59.100692+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Gray Irvin Long Wool Coat",
+    "displayed_price": 920.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/gray-irvin-long-wool-coat/19500311",
+    "scraped_at": "2026-10-15T17:55:59.106325+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Black REMUS Yak Blend Cardigan",
+    "displayed_price": 340.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/black-remus-yak-blend-cardigan/19500181",
+    "scraped_at": "2026-10-15T17:55:59.108028+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Off-White REMUS Yak Blend Cardigan",
+    "displayed_price": 340.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/off-white-remus-yak-blend-cardigan/19500151",
+    "scraped_at": "2026-10-15T17:55:59.109768+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Brown REMUS Yak Blend Cardigan",
+    "displayed_price": 340.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/brown-remus-yak-blend-cardigan/19500161",
+    "scraped_at": "2026-10-15T17:55:59.111334+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Black TRISTAN LDS Yak Blend Sweater",
+    "displayed_price": 340.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/black-tristan-lds-yak-blend-sweater/19500141",
+    "scraped_at": "2026-10-15T17:55:59.113022+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Brown TRISTAN LDS Yak Blend Sweater",
+    "displayed_price": 340.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/brown-tristan-lds-yak-blend-sweater/19500091",
+    "scraped_at": "2026-10-15T17:55:59.114600+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Off-White TRISTAN LDS Yak Blend Sweater",
+    "displayed_price": 340.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/off-white-tristan-lds-yak-blend-sweater/19543521",
+    "scraped_at": "2026-10-15T17:55:59.116215+00:00"
+  },
+  {
+    "brand": "COPERNI",
+    "name": "Off-White Sherpa Hoodie",
+    "displayed_price": 920.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/coperni/off-white-sherpa-hoodie/19574171",
+    "scraped_at": "2026-10-15T17:55:59.117798+00:00"
+  },
+  {
+    "brand": "COPERNI",
+    "name": "Black Cap Hoodie",
+    "displayed_price": 540.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/coperni/black-cap-hoodie/19574111",
+    "scraped_at": "2026-10-15T17:55:59.119382+00:00"
+  },
+  {
+    "brand": "COPERNI",
+    "name": "Gray College Hoodie",
+    "displayed_price": 500.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/coperni/gray-college-hoodie/19574151",
+    "scraped_at": "2026-10-15T17:55:59.121213+00:00"
+  },
+  {
+    "brand": "COPERNI",
+    "name": "Black Knit Scarf Zip Cape",
+    "displayed_price": 1510.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/coperni/black-knit-scarf-zip-cape/19778051",
+    "scraped_at": "2026-10-15T17:55:59.122787+00:00"
+  },
+  {
+    "brand": "BURBERRY",
+    "name": "Beige Pembrokeshire Jacket",
+    "displayed_price": 2595.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/burberry/beige-pembrokeshire-jacket/19750771",
+    "scraped_at": "2026-10-15T17:55:59.124320+00:00"
+  },
+  {
+    "brand": "LE17SEPTEMBRE",
+    "name": "Gray Flare Wool Half Coat",
+    "displayed_price": 805.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/le17septembre/gray-flare-wool-half-coat/19558591",
+    "scraped_at": "2026-10-15T17:55:59.125967+00:00"
+  },
+  {
+    "brand": "LE17SEPTEMBRE",
+    "name": "Brown Collarless Faux-Fur Muffler Coat",
+    "displayed_price": 1180.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/le17septembre/brown-collarless-faux-fur-muffler-coat/19558541",
+    "scraped_at": "2026-10-15T17:55:59.127460+00:00"
+  },
+  {
+    "brand": "LE17SEPTEMBRE",
+    "name": "Beige Provence Convertible Tie Knit Top",
+    "displayed_price": 405.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/le17septembre/beige-provence-convertible-tie-knit-top/19558501",
+    "scraped_at": "2026-10-15T17:55:59.129148+00:00"
+  },
+  {
+    "brand": "LE17SEPTEMBRE",
+    "name": "Black Wool-Blend Column Maxi Skirt",
+    "displayed_price": 345.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/le17septembre/black-wool-blend-column-maxi-skirt/19606511",
+    "scraped_at": "2026-10-15T17:55:59.130844+00:00"
+  },
+  {
+    "brand": "OFF-WHITE",
+    "name": "White Bookish Flower Regular T-shirt",
+    "displayed_price": 395.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/off-white/white-bookish-flower-regular-t-shirt/16157031",
+    "scraped_at": "2026-10-15T17:55:59.133058+00:00"
+  },
+  {
+    "brand": "OFF-WHITE",
+    "name": "Black Embroidered 'OW' Sweatpants",
+    "displayed_price": 595.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/off-white/black-embroidered-ow-sweatpants/16156191",
+    "scraped_at": "2026-10-15T17:55:59.135667+00:00"
+  },
+  {
+    "brand": "RHUDE",
+    "name": "Black 'Rhude American Spirit' Zip-Up Hoodie",
+    "displayed_price": 715.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/rhude/black-rhude-american-spirit-zip-up-hoodie/19589421",
+    "scraped_at": "2026-10-15T17:55:59.138998+00:00"
+  },
+  {
+    "brand": "LESET",
+    "name": "Brown Rio High Waist Flare Trousers",
+    "displayed_price": 260.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/leset/brown-rio-high-waist-flare-trousers/151390940",
+    "scraped_at": "2026-10-15T17:55:59.140544+00:00"
+  },
+  {
+    "brand": "LESET",
+    "name": "Brown Nando Lounge Pants",
+    "displayed_price": 160.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/leset/brown-nando-lounge-pants/791806299",
+    "scraped_at": "2026-10-15T17:55:59.142191+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Beige & Black Pertex Nuptse Reversible Down Jacket",
+    "displayed_price": 430.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/beige-and-black-pertex-nuptse-reversible-down-jacket/19280891",
+    "scraped_at": "2026-10-15T17:55:59.143798+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Gray & Black Pertex Nuptse Reversible Down Jacket",
+    "displayed_price": 430.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/gray-and-black-pertex-nuptse-reversible-down-jacket/19280881",
+    "scraped_at": "2026-10-15T17:55:59.145412+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Blue Pertex Nuptse Reversible Down Jacket",
+    "displayed_price": 430.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/blue-pertex-nuptse-reversible-down-jacket/19280901",
+    "scraped_at": "2026-10-15T17:55:59.146894+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Navy 1996 Retro Nuptse Down Jacket",
+    "displayed_price": 380.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/navy-1996-retro-nuptse-down-jacket/19281321",
+    "scraped_at": "2026-10-15T17:55:59.148635+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Brown 1996 Retro Nuptse Down Jacket",
+    "displayed_price": 380.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/brown-1996-retro-nuptse-down-jacket/19281281",
+    "scraped_at": "2026-10-15T17:55:59.150679+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Black 1996 Retro Nuptse Down Jacket",
+    "displayed_price": 380.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/black-1996-retro-nuptse-down-jacket/19281251",
+    "scraped_at": "2026-10-15T17:55:59.158722+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Pink Nuptse Short Down Jacket",
+    "displayed_price": 330.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/pink-nuptse-short-down-jacket/19281221",
+    "scraped_at": "2026-10-15T17:55:59.164606+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Black Hydrenalite Hoodie Down Jacket",
+    "displayed_price": 250.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/black-hydrenalite-hoodie-down-jacket/19281131",
+    "scraped_at": "2026-10-15T17:55:59.167762+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Black Nuptse Short Down Jacket",
+    "displayed_price": 330.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/black-nuptse-short-down-jacket/19281211",
+    "scraped_at": "2026-10-15T17:55:59.169436+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "White Nuptse Short Down Jacket",
+    "displayed_price": 330.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/white-nuptse-short-down-jacket/19281191",
+    "scraped_at": "2026-10-15T17:55:59.171145+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Green Lhotse Lightweight Insulated Printed Jacket",
+    "displayed_price": 190.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/green-lhotse-lightweight-insulated-printed-jacket/19280861",
+    "scraped_at": "2026-10-15T17:55:59.172761+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Black Hydrenalite Down Jacket",
+    "displayed_price": 220.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/black-hydrenalite-down-jacket/19281071",
+    "scraped_at": "2026-10-15T17:55:59.176098+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Black Hydrenalite A-Line Down Vest",
+    "displayed_price": 180.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/black-hydrenalite-a-line-down-vest/19280971",
+    "scraped_at": "2026-10-15T17:55:59.177724+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Pink Hydrenalite A-Line Down Vest",
+    "displayed_price": 180.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/pink-hydrenalite-a-line-down-vest/19280981",
+    "scraped_at": "2026-10-15T17:55:59.179318+00:00"
+  },
+  {
+    "brand": "LEMAIRE",
+    "name": "Black Short Wrap Coat",
+    "displayed_price": 1895.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lemaire/black-short-wrap-coat/19438211",
+    "scraped_at": "2026-10-15T17:55:59.180747+00:00"
+  },
+  {
+    "brand": "LEMAIRE",
+    "name": "Brown Short Wrap Coat",
+    "displayed_price": 1895.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lemaire/brown-short-wrap-coat/19438121",
+    "scraped_at": "2026-10-15T17:55:59.183833+00:00"
+  },
+  {
+    "brand": "LEMAIRE",
+    "name": "Black Wrap Coat",
+    "displayed_price": 1690.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lemaire/black-wrap-coat/19438241",
+    "scraped_at": "2026-10-15T17:55:59.185450+00:00"
+  },
+  {
+    "brand": "LEMAIRE",
+    "name": "Khaki Wrap Coat",
+    "displayed_price": 1690.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lemaire/khaki-wrap-coat/19438251",
+    "scraped_at": "2026-10-15T17:55:59.187542+00:00"
+  },
+  {
+    "brand": "LEMAIRE",
+    "name": "Khaki Short Duffle Coat",
+    "displayed_price": 1590.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lemaire/khaki-short-duffle-coat/19438091",
+    "scraped_at": "2026-10-15T17:55:59.191749+00:00"
+  },
+  {
+    "brand": "LEMAIRE",
+    "name": "Brown Leather Pilot Blouson Jacket",
+    "displayed_price": 4370.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lemaire/brown-leather-pilot-blouson-jacket/19437871",
+    "scraped_at": "2026-10-15T17:55:59.193421+00:00"
+  },
+  {
+    "brand": "LEMAIRE",
+    "name": "Pink V-Neck Sweater",
+    "displayed_price": 1050.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lemaire/pink-v-neck-sweater/19436951",
+    "scraped_at": "2026-10-15T17:55:59.194972+00:00"
+  },
+  {
+    "brand": "LEMAIRE",
+    "name": "Pink Drape Shirt",
+    "displayed_price": 990.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lemaire/pink-drape-shirt/19437501",
+    "scraped_at": "2026-10-15T17:55:59.196470+00:00"
+  },
+  {
+    "brand": "LEMAIRE",
+    "name": "Beige Printed Two Layers Blouse",
+    "displayed_price": 1890.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/lemaire/beige-printed-two-layers-blouse/19437241",
+    "scraped_at": "2026-10-15T17:55:59.197857+00:00"
+  },
+  {
+    "brand": "COMME DES GARÇONS",
+    "name": "Black Thin Georgette Blazer",
+    "displayed_price": 1425.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/comme-des-garcons/black-thin-georgette-blazer/19740571",
+    "scraped_at": "2026-10-15T17:55:59.200411+00:00"
+  },
+  {
+    "brand": "COMME DES GARÇONS",
+    "name": "Black Jacquard Flower Pattern Jacket",
+    "displayed_price": 2535.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/comme-des-garcons/black-jacquard-flower-pattern-jacket/19740611",
+    "scraped_at": "2026-10-15T17:55:59.226450+00:00"
+  },
+  {
+    "brand": "KNWLS",
+    "name": "Black Veil Leather Chaps & Corset",
+    "displayed_price": 1150.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/charlotte-knowles/black-veil-leather-chaps-and-corset/19412501",
+    "scraped_at": "2026-10-15T17:55:59.228290+00:00"
+  },
+  {
+    "brand": "KNWLS",
+    "name": "SSENSE Exclusive Brown Smocked Leather Minidress",
+    "displayed_price": 1570.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/charlotte-knowles/ssense-exclusive-brown-smocked-leather-minidress/19601821",
+    "scraped_at": "2026-10-15T17:55:59.229900+00:00"
+  },
+  {
+    "brand": "KNWLS",
+    "name": "Black CU Hooded Minidress",
+    "displayed_price": 505.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/charlotte-knowles/black-cu-hooded-minidress/19412381",
+    "scraped_at": "2026-10-15T17:55:59.231369+00:00"
+  },
+  {
+    "brand": "KIKO KOSTADINOV",
+    "name": "Navy Siskin Hooded Coat",
+    "displayed_price": 1990.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/kiko-kostadinov/navy-siskin-hooded-coat/19752491",
+    "scraped_at": "2026-10-15T17:55:59.232778+00:00"
+  },
+  {
+    "brand": "STEFAN COOKE",
+    "name": "Gray Cable Hoodie",
+    "displayed_price": 630.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/stefan-cooke/gray-cable-hoodie/19753411",
+    "scraped_at": "2026-10-15T17:55:59.234129+00:00"
+  },
+  {
+    "brand": "AMI PARIS",
+    "name": "Beige Long Double-Breasted Wool Coat",
+    "displayed_price": 1820.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ami-alexandre-mattiussi/beige-long-double-breasted-wool-coat/19548851",
+    "scraped_at": "2026-10-15T17:55:59.235709+00:00"
+  },
+  {
+    "brand": "AMI PARIS",
+    "name": "Red Cotton Zipped Ami de Coeur Jacket",
+    "displayed_price": 990.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/ami-alexandre-mattiussi/red-cotton-zipped-ami-de-coeur-jacket/19548761",
+    "scraped_at": "2026-10-15T17:55:59.237175+00:00"
+  },
+  {
+    "brand": "DUNST",
+    "name": "Beige Refined Mac Coat",
+    "displayed_price": 320.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/dunst/beige-refined-mac-coat/19410411",
+    "scraped_at": "2026-10-15T17:55:59.238699+00:00"
+  },
+  {
+    "brand": "DUNST",
+    "name": "Black Detachable A-2 Blouson Leather Jacket",
+    "displayed_price": 725.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/dunst/black-detachable-a-2-blouson-leather-jacket/19410471",
+    "scraped_at": "2026-10-15T17:55:59.240181+00:00"
+  },
+  {
+    "brand": "DUNST",
+    "name": "Brown 90s Wide Corduroy Jeans",
+    "displayed_price": 115.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/dunst/brown-90s-wide-corduroy-jeans/19410391",
+    "scraped_at": "2026-10-15T17:55:59.241652+00:00"
+  },
+  {
+    "brand": "DUNST",
+    "name": "Navy Checked Flannel BD Shirt",
+    "displayed_price": 125.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/dunst/navy-checked-flannel-bd-shirt/19409851",
+    "scraped_at": "2026-10-15T17:55:59.255789+00:00"
+  },
+  {
+    "brand": "DUNST",
+    "name": "Red Checked Flannel BD Shirt",
+    "displayed_price": 125.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/dunst/red-checked-flannel-bd-shirt/19641851",
+    "scraped_at": "2026-10-15T17:55:59.263653+00:00"
+  },
+  {
+    "brand": "DUNST",
+    "name": "Gray Pleated Semi-Wide Trousers",
+    "displayed_price": 115.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/dunst/gray-pleated-semi-wide-trousers/19410331",
+    "scraped_at": "2026-10-15T17:55:59.265134+00:00"
+  },
+  {
+    "brand": "DUNST",
+    "name": "Green Double Pleated Wide Chino Trousers",
+    "displayed_price": 120.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/dunst/green-double-pleated-wide-chino-trousers/19410341",
+    "scraped_at": "2026-10-15T17:55:59.266749+00:00"
+  },
+  {
+    "brand": "DUNST",
+    "name": "Khaki 90s Wide Corduroy Jeans",
+    "displayed_price": 115.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/dunst/khaki-90s-wide-corduroy-jeans/19641891",
+    "scraped_at": "2026-10-15T17:55:59.268351+00:00"
+  },
+  {
+    "brand": "COMME DES GARÇONS COMME DES GARÇONS",
+    "name": "Black Satin Thick Midi Dress",
+    "displayed_price": 965.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/comme-des-garcons-comme-des-garcons/black-satin-thick-midi-dress/19708911",
+    "scraped_at": "2026-10-15T17:55:59.269951+00:00"
+  },
+  {
+    "brand": "TOTEME",
+    "name": "Black Slit Scuba Midi Skirt",
+    "displayed_price": 780.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/totme/black-slit-scuba-midi-skirt/19443941",
+    "scraped_at": "2026-10-15T17:55:59.271665+00:00"
+  },
+  {
+    "brand": "ANINE BING",
+    "name": "Blue Pascale Denim Trench Jacket",
+    "displayed_price": 450.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/anine-bing/blue-pascale-denim-trench-jacket/19749591",
+    "scraped_at": "2026-10-15T17:55:59.273153+00:00"
+  },
+  {
+    "brand": "ANINE BING",
+    "name": "Black Hugh Jeans",
+    "displayed_price": 280.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/anine-bing/black-hugh-jeans/19749411",
+    "scraped_at": "2026-10-15T17:55:59.274697+00:00"
+  },
+  {
+    "brand": "ANINE BING",
+    "name": "Blue Kate Jeans",
+    "displayed_price": 250.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/anine-bing/blue-kate-jeans/19749381",
+    "scraped_at": "2026-10-15T17:55:59.276279+00:00"
+  },
+  {
+    "brand": "ANINE BING",
+    "name": "Black Karter Sweatpants",
+    "displayed_price": 180.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/anine-bing/black-karter-sweatpants/19757161",
+    "scraped_at": "2026-10-15T17:55:59.279073+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Black Wool Cashmere Coat",
+    "displayed_price": 1020.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/black-wool-cashmere-coat/19500341",
+    "scraped_at": "2026-10-15T17:55:59.281290+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Off-White Reversible Catherine Leather Jacket",
+    "displayed_price": 2070.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/off-white-reversible-catherine-leather-jacket/19500251",
+    "scraped_at": "2026-10-15T17:55:59.283218+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Black JONAH Dense Cashmere Turtleneck",
+    "displayed_price": 840.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/black-jonah-dense-cashmere-turtleneck/19500071",
+    "scraped_at": "2026-10-15T17:55:59.285464+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Taupe JONAH Dense Cashmere Turtleneck Sweater",
+    "displayed_price": 840.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/taupe-jonah-dense-cashmere-turtleneck-sweater/19500081",
+    "scraped_at": "2026-10-15T17:55:59.287023+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Gray REMUS Yak Blend Cardigan",
+    "displayed_price": 340.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/gray-remus-yak-blend-cardigan/19500171",
+    "scraped_at": "2026-10-15T17:55:59.288477+00:00"
+  },
+  {
+    "brand": "LOULOU DE SAISON",
+    "name": "Black JUDY Wool Cashmere Drap Miniskirt",
+    "displayed_price": 450.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/loulou-studio/black-judy-wool-cashmere-drap-miniskirt/19500191",
+    "scraped_at": "2026-10-15T17:55:59.289843+00:00"
+  },
+  {
+    "brand": "DIESEL",
+    "name": "Blue Regular D-Lie Jeans",
+    "displayed_price": 795.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/diesel/blue-regular-d-lie-jeans/19689021",
+    "scraped_at": "2026-10-15T17:55:59.291164+00:00"
+  },
+  {
+    "brand": "THE NORTH FACE",
+    "name": "Brown Nuptse Short Down Jacket",
+    "displayed_price": 330.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/the-north-face/brown-nuptse-short-down-jacket/19281231",
+    "scraped_at": "2026-10-15T17:55:59.292479+00:00"
+  },
+  {
+    "brand": "LESET",
+    "name": "Gray Lauren Long Sleeve Turtleneck",
+    "displayed_price": 140.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/leset/gray-lauren-long-sleeve-turtleneck/257685667",
+    "scraped_at": "2026-10-15T17:55:59.293804+00:00"
+  },
+  {
+    "brand": "LESET",
+    "name": "Black Margo V Neck T-shirt",
+    "displayed_price": 90.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/leset/black-margo-v-neck-t-shirt/61503472",
+    "scraped_at": "2026-10-15T17:55:59.295228+00:00"
+  },
+  {
+    "brand": "LESET",
+    "name": "White Margo V Neck T-shirt",
+    "displayed_price": 90.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/leset/white-margo-v-neck-t-shirt/287108551",
+    "scraped_at": "2026-10-15T17:55:59.296692+00:00"
+  },
+  {
+    "brand": "SACAI",
+    "name": "Blue Faux-Fur Denim Jacket",
+    "displayed_price": 1365.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/sacai/blue-faux-fur-denim-jacket/19745421",
+    "scraped_at": "2026-10-15T17:55:59.298164+00:00"
+  },
+  {
+    "brand": "SACAI",
+    "name": "Black & Beige Leopard Jersey T-Shirt",
+    "displayed_price": 650.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/sacai/black-and-beige-leopard-jersey-t-shirt/19745181",
+    "scraped_at": "2026-10-15T17:55:59.299603+00:00"
+  },
+  {
+    "brand": "SACAI",
+    "name": "Black Leopard Jersey T-Shirt",
+    "displayed_price": 650.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/sacai/black-leopard-jersey-t-shirt/19745191",
+    "scraped_at": "2026-10-15T17:55:59.301087+00:00"
+  },
+  {
+    "brand": "ISSEY MIYAKE",
+    "name": "Taupe Hatching Pleats Top",
+    "displayed_price": 755.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/issey-miyake/taupe-hatching-pleats-top/19727421",
+    "scraped_at": "2026-10-15T17:55:59.302491+00:00"
+  },
+  {
+    "brand": "ISSEY MIYAKE",
+    "name": "Black Wooly Pleats Top",
+    "displayed_price": 445.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/issey-miyake/black-wooly-pleats-top/19727291",
+    "scraped_at": "2026-10-15T17:55:59.303909+00:00"
+  },
+  {
+    "brand": "ISSEY MIYAKE",
+    "name": "Black Chiffon Twist Top",
+    "displayed_price": 450.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/issey-miyake/black-chiffon-twist-top/19745101",
+    "scraped_at": "2026-10-15T17:55:59.305547+00:00"
+  },
+  {
+    "brand": "ISSEY MIYAKE",
+    "name": "White Chiffon Twist Top",
+    "displayed_price": 450.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/issey-miyake/white-chiffon-twist-top/19727091",
+    "scraped_at": "2026-10-15T17:55:59.306997+00:00"
+  },
+  {
+    "brand": "ISSEY MIYAKE",
+    "name": "Black Cotton Baguette Turtleneck",
+    "displayed_price": 395.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/issey-miyake/black-cotton-baguette-turtleneck/19726981",
+    "scraped_at": "2026-10-15T17:55:59.308408+00:00"
+  },
+  {
+    "brand": "ISSEY MIYAKE",
+    "name": "Black Spongy Cardigan",
+    "displayed_price": 795.0,
+    "currency": "USD",
+    "product_url": "https://www.ssense.com/en-us/women/product/issey-miyake/black-spongy-cardigan/19729111",
+    "scraped_at": "2026-10-15T17:55:59.309816+00:00"
+  }
+]
