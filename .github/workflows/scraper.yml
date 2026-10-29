@@ -27,6 +27,13 @@ jobs:
       - name: Discover product URLs
         run: python scraper/scrape.py
 
+      - name: Upload products to Firestore
+        working-directory: scraper
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: python upload_to_firestore.py
+
+
       - name: Save discovered URLs as an artifact
         uses: actions/upload-artifact@v4
         with:
