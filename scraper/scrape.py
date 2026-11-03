@@ -38,8 +38,7 @@ with sync_playwright() as p:
     #create browser object u can work w
         #headless= whether u want see browser. false=no
         #slowmo = slowsdown to see stuff better
-    browser = p.chromium.launch(headless=False, slow_mo = 50)
-
+    browser = p.chromium.launch(headless=True)
     
 
     #page object to interact with 
