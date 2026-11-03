@@ -1,9 +1,21 @@
 import json
 from datetime import datetime
 from zoneinfo import ZoneInfo
+from pathlib import Path
+
 #import webscraping playwright tools
 from playwright.sync_api import sync_playwright
 
+#create url file that will turn to json
+#URL_FILE = Path(__file__).parent / "product_urls.json"
+#if URL_FILE.exists():
+    #with open(URL_FILE, "r") as file:
+        #product_urls = json.load(file)
+
+    #print(f"Loaded {len(product_urls)} saved product URLs.")
+
+#else:
+    #product_urls = None
 
 #code to allow to use firebase
 
@@ -98,6 +110,7 @@ with sync_playwright() as p:
             "displayed_price": product_data["offers"]["price"],
             "currency": product_data["offers"]["priceCurrency"],
             "product_url": product_data["url"],
+            "image_url": product_data.get("image"),
             "scraped_at": datetime.now(ZoneInfo("America/New_York")).isoformat()        }
         #add keyvalues to product list
         all_products.append(product)
