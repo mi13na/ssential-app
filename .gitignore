@@ -1,12 +1,10 @@
-# Python virtual environment
-scraper/.venv/
+# Firebase credentials
+scraper/ssentialServiceKey.json
+
+# Mac system files
+.DS_Store
+**/.DS_Store
 
 # Python cache files
 __pycache__/
-*.py[cod]
-
-# macOS files
-.DS_Store
-
-# Scraper diagnostic screenshot
-scraper/access_check.png
+*.pyc

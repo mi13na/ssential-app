@@ -1,1 +1,4 @@
-playwright==1.60.0
+#interact with ssense
+playwright
+#connect to firebase
+firebase-admin
