@@ -47,21 +47,17 @@ with sync_playwright() as p:
     #product and product url list
     all_products = []
     seen_urls = set()
-    #go to webpage and wait for it to load
-    response = page.goto('https://www.ssense.com/en-us/women')
-    page.wait_for_load_state("networkidle")
+    #go to webpage. don't wait for networkidle, tracking scripts keep it busy forever
+    response = page.goto('https://www.ssense.com/en-us/women', wait_until="domcontentloaded")
 
-    #check if error
-    if response.status == 403:
-        print("SSENSE blocked the request (HTTP 403).")
+    #check if blocked or verification page. exit 1 so the github action fails
+    if response is None or response.status == 403 or "just a moment" in page.title().lower():
+        print(f"SSENSE blocked the request (status {response.status if response else None}, title {page.title()!r}).")
         browser.close()
-        exit()
-    
-    #check verification
-    if "just a moment" in page.title().lower():
-        print("SSENSE returned a security verification page.")
-        browser.close()
-        raise SystemExit
+        raise SystemExit(1)
+
+    #wait for product cards to load
+    page.wait_for_selector('a:has(script[type="application/ld+json"])', timeout=30000)
 
 
 
