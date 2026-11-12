@@ -69,6 +69,7 @@ import { useAuth } from "./auth";
 function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [photoFailed, setPhotoFailed] = useState(false);
   const { user, loading, signOut } = useAuth();
 
   return (
@@ -96,12 +97,19 @@ function Layout() {
                 className="cursor-pointer"
                 aria-label="Account menu"
               >
-                <img
-                  src={user.photoURL}
-                  alt="Profile"
-                  referrerPolicy="no-referrer"
-                  className="h-12 w-12 rounded-full object-cover"
-                />
+                {photoFailed ? (
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-xl font-bold text-neutral-800">
+                    {user.name[0]}
+                  </div>
+                ) : (
+                  <img
+                    src={user.photoURL}
+                    alt="Profile"
+                    referrerPolicy="no-referrer"
+                    onError={() => setPhotoFailed(true)}
+                    className="h-12 w-12 rounded-full object-cover"
+                  />
+                )}
               </button>
 
               {userMenuOpen && (
