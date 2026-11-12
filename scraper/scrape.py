@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 from zoneinfo import ZoneInfo
+from pathlib import Path
 #import webscraping playwright tools
 from playwright.sync_api import sync_playwright
 
@@ -13,7 +14,9 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-cred = credentials.Certificate('ssentialServiceKey.json')
+SCRAPER_DIR = Path(__file__).resolve().parent
+
+cred = credentials.Certificate(SCRAPER_DIR / 'ssentialServiceKey.json')
 
 #initialize. make app point to database
 firebase_admin.initialize_app(cred)
@@ -38,7 +41,7 @@ with sync_playwright() as p:
     #create browser object u can work w
         #headless= whether u want see browser. false=no
         #slowmo = slowsdown to see stuff better
-    browser = p.chromium.launch(headless=True)
+    browser = p.chromium.launch(headless=False)
     
 
     #page object to interact with 
@@ -111,7 +114,7 @@ with sync_playwright() as p:
         doc_ref.set(product)
 
     #create json file and write product dic info to it
-    with open("products.json", "w") as file:
+    with open(SCRAPER_DIR / "products.json", "w") as file:
         json.dump(all_products, file, indent=4)
 
     #check if product info saved
