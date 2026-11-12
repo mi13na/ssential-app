@@ -4,12 +4,12 @@ from zoneinfo import ZoneInfo
 from pathlib import Path
 import random
 
-#import webscraping playwright tools
-from playwright.sync_api import sync_playwright
+# import botasaurus tools
+from botasaurus.browser import browser, Driver
 
-#code to allow to use firebase
+# code to allow to use firebase
 
-#import firebase functionality
+# import firebase functionality
 import firebase_admin
 
 from firebase_admin import credentials
@@ -17,40 +17,46 @@ from firebase_admin import firestore
 
 cred = credentials.Certificate('ssentialServiceKey.json')
 
-#initialize. make app point to database
+# initialize. make app point to database
 firebase_admin.initialize_app(cred)
 
-#upload data to firebase
-#object we use to communicate with firestore
+# object we use to communicate with firestore
 db = firestore.client()
 
-#find product url json file
+# find product url json file and product data json file
 URLS_FILE = Path(__file__).parent / "product_urls.json"
+DATA_FILE = Path(__file__).parent / "products.json"
+
 all_products = []
 seen_urls = set()
 if URLS_FILE.exists():
     with open(URLS_FILE, "r") as file:
         seen_urls = set(json.load(file))
 
+# javascript that returns the JSON-LD blocks on the page
+GET_ALL_JSON_LD = """
+return [...document.querySelectorAll('script[type="application/ld+json"]')]
+    .map(s => s.textContent);
+"""
 
-#opening pages/website, accounting for erros
+# javascript that returns the JSON-LD blocks inside product cards
+GET_CARD_JSON_LD = """
+return [...document.querySelectorAll('a script[type="application/ld+json"]')]
+    .map(s => s.textContent);
+"""
 
 
-#close browser once code done
-with sync_playwright() as p:
-    #create browser object u can work w
-        #headless= whether u want see browser. false=no
-        #slowmo = slowsdown to see stuff better
-    browser = p.chromium.launch(headless=False)
-    
+def today():
+    return datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
 
-    #page object to interact with 
-        #what is page object?
-    page = browser.new_page()
 
-    #FIRST PATHWAY: UPLOAD FIRST TIME
-    #check if scraper empty
+# open the browser, close it automatically once the function finishes
+# headless=False means you can see the browser
+@browser(headless=False, output=None)
+def scrape(driver: Driver, data):
 
+    # FIRST PATHWAY: UPLOAD FIRST TIME
+    # check if scraper empty
     if not seen_urls:
         print("No saved product URLs found. Discovering products...")
 
@@ -61,35 +67,26 @@ with sync_playwright() as p:
 
             # Open current page
             category_url = f"https://www.ssense.com/en-us/women?page={page_number}"
-
-            response = page.goto(
-                category_url,
-                wait_until="domcontentloaded",
-                timeout=30000
-            )
+            driver.get(category_url, bypass_cloudflare=True)
+            driver.sleep(random.uniform(3, 5))
 
             print(f"SSENSE Page {page_number} opened!", flush=True)
 
-            # Check if error
-            if response is None or response.status != 200:
-                print(f"Could not open page {page_number}. Stopping.")
-                break
-
             # Check verification
-            if "just a moment" in page.title().lower():
+            if "just a moment" in driver.title.lower():
                 print("SSENSE returned a security verification page.")
                 break
 
             # Find product cards
-            products = page.locator('a:has(script[type="application/ld+json"])')
-
-            print(f"Found {len(products.all())} product cards.")
+            cards = driver.run_js(GET_CARD_JSON_LD)
+            print(f"Found {len(cards)} product cards.")
 
             products_before_page = len(all_products)
-            # Go through each product card
-            for card in products.all():
 
-                product_data = json.loads(card.locator('script').inner_text())
+            # Go through each product card
+            for card in cards:
+
+                product_data = json.loads(card)
                 product_url = product_data["url"]
 
                 # Skip duplicates
@@ -107,7 +104,7 @@ with sync_playwright() as p:
                     "currency": product_data["offers"]["priceCurrency"],
                     "product_url": product_url,
                     "image_url": product_data.get("image"),
-                    "category": "Womenswear" if "/women/" in product_url else "Mens Clothing",
+                    "category": "Womenswear" if "/women/" in product_url else "Other",
                     "scraped_at": datetime.now(ZoneInfo("America/New_York")).isoformat()
                 }
 
@@ -119,9 +116,11 @@ with sync_playwright() as p:
                 # Stop when we reach 200
                 if len(all_products) >= target_products:
                     break
+
             if len(all_products) == products_before_page:
                 print("No new products found. Stopping.")
                 break
+
             # Check if target reached
             if len(all_products) >= target_products:
                 print("Reached 200 products!")
@@ -133,22 +132,22 @@ with sync_playwright() as p:
             # Wait 2-5 seconds
             wait_time = random.randint(2, 5)
             print(f"Waiting {wait_time} seconds...")
-            page.wait_for_timeout(wait_time * 1000)
+            driver.sleep(wait_time)
 
         # Save product URLs
         with open(URLS_FILE, "w") as file:
             json.dump(list(seen_urls), file, indent=4)
-        
-        #ADDING TO FIRESTORE
-        #add product to database. 
-            #store with product id to prevent duplicates
-            #doc_ref stores specific collection u select
-        
+
         # Save product data locally
-        with open("products.json", "w") as file:
+        with open(DATA_FILE, "w") as file:
             json.dump(all_products, file, indent=4)
 
         print(f"Successfully saved {len(all_products)} products!")
+
+        # ADDING TO FIRESTORE
+        # add product to database.
+            # store with product id to prevent duplicates
+            # doc_ref stores specific document u select
 
         # Upload products to Firestore
         for product in all_products:
@@ -161,14 +160,14 @@ with sync_playwright() as p:
             doc_ref.set(product)
 
             # Create daily price history
-            today = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
-            price_ref = doc_ref.collection("priceHistory").document(today)
+            price_ref = doc_ref.collection("priceHistory").document(today())
 
             price_ref.set({
                 "price": product["displayed_price"],
                 "currency": product["currency"]
             })
 
+        print("Uploaded products to Firestore!")
 
 
     else:
@@ -178,7 +177,8 @@ with sync_playwright() as p:
         products_ref = db.collection("products")
 
         # Retrieve all product documents
-        products = products_ref.stream()
+        # list() loads them all first so the connection doesn't stay open during the slow scraping
+        products = list(products_ref.stream())
 
         print("Checking products in Firestore...")
 
@@ -187,39 +187,38 @@ with sync_playwright() as p:
 
             # Retrieve document ID and product information
             product_id = product_doc.id
-            product_data = product_doc.to_dict()
-            product_url = product_data["product_url"]
+            saved_data = product_doc.to_dict()
+            product_url = saved_data["product_url"]
 
-            # Wait 3–5 seconds
+            # Wait 3-5 seconds
             wait_time = random.randint(3, 5)
             print(f"Waiting {wait_time} seconds...")
-            page.wait_for_timeout(wait_time * 1000)
+            driver.sleep(wait_time)
 
             print(f"Opening: {product_url}")
 
-            response = page.goto(
-                product_url,
-                wait_until="domcontentloaded",
-                timeout=30000
-            )
-
-            # Check for errors
-            if response is None:
-                print("Could not open product. No response received.")
-                continue
-
-            if response.status != 200:
-                print(f"Could not open product. Status: {response.status}")
+            try:
+                driver.get(product_url, bypass_cloudflare=True)
+            except Exception as error:
+                print(f"Could not open product. {error}")
                 continue
 
             print("Product page opened!")
 
-            # Retrieve product information from JSON-LD
-            product_script = page.locator(
-                'script[type="application/ld+json"]'
-            ).first
+            # Retrieve product information from JSON-LD (pick the Product block)
+            product_data = None
+            for raw in driver.run_js(GET_ALL_JSON_LD):
+                try:
+                    block = json.loads(raw)
+                except json.JSONDecodeError:
+                    continue
+                if isinstance(block, dict) and block.get("@type") == "Product":
+                    product_data = block
+                    break
 
-            product_data = json.loads(product_script.inner_text())
+            if product_data is None:
+                print("No product data found on page. Skipping.")
+                continue
 
             # Create updated product dictionary
             product = {
@@ -230,7 +229,7 @@ with sync_playwright() as p:
                 "currency": product_data["offers"]["priceCurrency"],
                 "product_url": product_data["url"],
                 "image_url": product_data.get("image"),
-                "category": "Womenswear" if "/women/" in product_data["url"] else "Mens Clothing",
+                "category": "Womenswear" if "/women/" in product_data["url"] else "Other",
                 "scraped_at": datetime.now(ZoneInfo("America/New_York")).isoformat()
             }
 
@@ -239,9 +238,7 @@ with sync_playwright() as p:
             doc_ref.update(product)
 
             # Save today's price in price history
-            today = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
-
-            price_ref = doc_ref.collection("priceHistory").document(today)
+            price_ref = doc_ref.collection("priceHistory").document(today())
 
             price_ref.set({
                 "price": product["displayed_price"],
@@ -250,4 +247,6 @@ with sync_playwright() as p:
 
             print(f"Updated Firebase product: {product_id}")
 
-    browser.close()
+
+# run the scraper
+scrape()
