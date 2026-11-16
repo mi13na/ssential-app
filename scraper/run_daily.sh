@@ -19,6 +19,13 @@ if [[ ! -f "$SCRAPER_DIR/ssentialServiceKey.json" ]] || grep -q 'REPLACE_ME' "$S
     exit 1
 fi
 
+# launchd fires missed runs the moment the Mac wakes, before Wi-Fi reconnects.
+# Wait up to 60s for the network; any HTTP response (even a block page) counts.
+for _ in {1..12}; do
+    curl -s -o /dev/null --max-time 5 https://www.ssense.com && break
+    sleep 5
+done
+
 echo "[$(date)] Starting scrape"
 cd "$SCRAPER_DIR"
 "$SCRAPER_DIR/.venv/bin/python" scrape.py
