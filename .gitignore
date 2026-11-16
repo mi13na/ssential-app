@@ -4,6 +4,7 @@ scraper/ssentialServiceKey.json
 # Mac system files
 .DS_Store
 **/.DS_Store
+node_modules/
 
 # Python cache files
 __pycache__/

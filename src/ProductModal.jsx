@@ -14,6 +14,18 @@ function ProductModal({ product, onClose }) {
         <div className="p-4">
           <h2 className="text-2xl font-bold">{product.name}</h2>
           <p className="mt-1 text-lg font-semibold">{product.price}</p>
+
+        {product.product_url && (
+          <a
+            href={product.product_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-block text-sm text-blue-600 underline"
+          >
+            View on SSENSE
+          </a>
+        )}
+
           <p className="mt-3 text-neutral-700">{product.description}</p>
           <button
             onClick={onClose}

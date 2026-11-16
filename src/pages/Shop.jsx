@@ -40,22 +40,61 @@
 
 // export default Shop;
 
+// import { useState } from "react";
+// import ProductCard from "../ProductCard";
+// import ProductModal from "../ProductModal";
+// import products from "../products";
+
+// function Shop({ wishlist, toggleWishlist }) {
+//   const [selected, setSelected] = useState(null);
+
+//   return (
+//     <>
+//       <input
+//         type="text"
+//         placeholder="Search..."
+//         className="mx-auto mb-4 block w-full max-w-5xl rounded bg-white p-2"
+//       />
+
+//       <div className="mx-auto grid max-w-5xl grid-cols-4 gap-4">
+//         {products.map((product) => (
+//           <ProductCard
+//             key={product.id}
+//             image={product.image}
+//             price={product.price}
+//             isWishlisted={wishlist.includes(product.id)}
+//             onToggleWishlist={() => toggleWishlist(product.id)}
+//             onExpand={() => setSelected(product)}
+//           />
+//         ))}
+//       </div>
+
+//       <ProductModal product={selected} onClose={() => setSelected(null)} />
+//     </>
+//   );
+// }
+
+// export default Shop;
+
+
 import { useState } from "react";
 import ProductCard from "../ProductCard";
 import ProductModal from "../ProductModal";
-import products from "../products";
+import ProductSkeleton from "../ProductSkeleton";
 
-function Shop({ wishlist, toggleWishlist }) {
+function Shop({ products, loading, error, wishlist, toggleWishlist }) {
   const [selected, setSelected] = useState(null);
 
-  return (
-    <>
-      <input
-        type="text"
-        placeholder="Search..."
-        className="mx-auto mb-4 block w-full max-w-5xl rounded bg-white p-2"
-      />
+  let content;
 
+  if (loading) {
+    content = <ProductSkeleton />;
+  } else if (error) {
+    content = <p className="mx-auto max-w-5xl text-white">{error}</p>;
+  } else if (products.length === 0) {
+    content = <p className="mx-auto max-w-5xl text-white">No products yet.</p>;
+  } else {
+    content = (
       <div className="mx-auto grid max-w-5xl grid-cols-4 gap-4">
         {products.map((product) => (
           <ProductCard
@@ -68,6 +107,18 @@ function Shop({ wishlist, toggleWishlist }) {
           />
         ))}
       </div>
+    );
+  }
+
+  return (
+    <>
+      <input
+        type="text"
+        placeholder="Search..."
+        className="mx-auto mb-4 block w-full max-w-5xl rounded bg-white p-2"
+      />
+
+      {content}
 
       <ProductModal product={selected} onClose={() => setSelected(null)} />
     </>
