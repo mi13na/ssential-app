@@ -14,6 +14,12 @@ if [[ -f "$STAMP_FILE" && "$(cat "$STAMP_FILE")" == "$TODAY" ]]; then
     exit 0
 fi
 
+# The hourly retry also fires during overnight dark wakes, when the Mac keeps
+# falling back asleep mid-run. Wait for the scheduled hour (install_launchd.sh default).
+if (( $(date +%-H) < 9 )); then
+    exit 0
+fi
+
 if [[ ! -f "$SCRAPER_DIR/ssentialServiceKey.json" ]] || grep -q 'REPLACE_ME' "$SCRAPER_DIR/ssentialServiceKey.json"; then
     echo "[$(date)] ssentialServiceKey.json is missing or still has placeholder values; skipping."
     exit 1

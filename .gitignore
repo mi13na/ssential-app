@@ -13,3 +13,4 @@ __pycache__/
 scraper/.venv/
 scraper/logs/
 scraper/products.json
+scraper/error_logs/
