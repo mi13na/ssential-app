@@ -8,3 +8,7 @@ scraper/ssentialServiceKey.json
 # Python cache files
 __pycache__/
 *.pyc
+
+scraper/.venv/
+scraper/logs/
+scraper/products.json

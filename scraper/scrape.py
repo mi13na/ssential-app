@@ -15,7 +15,9 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-cred = credentials.Certificate('ssentialServiceKey.json')
+SCRAPER_DIR = Path(__file__).resolve().parent
+
+cred = credentials.Certificate(SCRAPER_DIR / 'ssentialServiceKey.json')
 
 # initialize. make app point to database
 firebase_admin.initialize_app(cred)
@@ -24,8 +26,8 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # find product url json file and product data json file
-URLS_FILE = Path(__file__).parent / "product_urls.json"
-DATA_FILE = Path(__file__).parent / "products.json"
+URLS_FILE = SCRAPER_DIR / "product_urls.json"
+DATA_FILE = SCRAPER_DIR / "products.json"
 
 all_products = []
 seen_urls = set()
@@ -50,9 +52,22 @@ def today():
     return datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
 
 
+# add today's price to the product's priceHistory subcollection
+# one document per day (id = date), so earlier days are never overwritten
+# and a retry later the same day just refreshes today's entry
+def save_price_history(doc_ref, product):
+    doc_ref.collection("priceHistory").document(today()).set({
+        "price": product["displayed_price"],
+        "currency": product["currency"],
+        "scraped_at": product["scraped_at"]
+    })
+
+
 # open the browser, close it automatically once the function finishes
 # headless=False means you can see the browser
-@browser(headless=False, output=None)
+# raise_exception + close_on_crash: on an error, exit with a failure instead of
+# pausing for Enter, so run_daily.sh sees it failed and retries on the next trigger
+@browser(headless=False, output=None, raise_exception=True, close_on_crash=True)
 def scrape(driver: Driver, data):
 
     # FIRST PATHWAY: UPLOAD FIRST TIME
@@ -134,6 +149,10 @@ def scrape(driver: Driver, data):
             print(f"Waiting {wait_time} seconds...")
             driver.sleep(wait_time)
 
+        # fail so run_daily.sh retries instead of marking today done
+        if not all_products:
+            raise RuntimeError("No products collected.")
+
         # Save product URLs
         with open(URLS_FILE, "w") as file:
             json.dump(list(seen_urls), file, indent=4)
@@ -157,15 +176,11 @@ def scrape(driver: Driver, data):
             doc_ref = db.collection("products").document(product_id)
 
             # Upload product information
-            doc_ref.set(product)
+            # merge=True keeps any fields already on the document
+            doc_ref.set(product, merge=True)
 
-            # Create daily price history
-            price_ref = doc_ref.collection("priceHistory").document(today())
-
-            price_ref.set({
-                "price": product["displayed_price"],
-                "currency": product["currency"]
-            })
+            # Add today's price to the price history
+            save_price_history(doc_ref, product)
 
         print("Uploaded products to Firestore!")
 
@@ -181,6 +196,8 @@ def scrape(driver: Driver, data):
         products = list(products_ref.stream())
 
         print("Checking products in Firestore...")
+
+        updated_count = 0
 
         # Go through each product document
         for product_doc in products:
@@ -237,15 +254,18 @@ def scrape(driver: Driver, data):
             doc_ref = product_doc.reference
             doc_ref.update(product)
 
-            # Save today's price in price history
-            price_ref = doc_ref.collection("priceHistory").document(today())
+            # Add today's price to the price history
+            save_price_history(doc_ref, product)
 
-            price_ref.set({
-                "price": product["displayed_price"],
-                "currency": product["currency"]
-            })
-
+            updated_count += 1
             print(f"Updated Firebase product: {product_id}")
+
+        print(f"Updated {updated_count} of {len(products)} products.")
+
+        # nothing updated usually means no network or a block page
+        # fail so run_daily.sh retries instead of marking today done
+        if updated_count == 0:
+            raise RuntimeError("No products were updated.")
 
 
 # run the scraper
