@@ -52,6 +52,16 @@ def today():
     return datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
 
 
+# SSENSE's JSON-LD image urls contain a "__IMAGE_PARAMS__" placeholder that
+# their site fills in; without it the url 404s, so fill in the size settings
+IMAGE_PARAMS = "b_white,c_lpad,g_south,ar_2:3/f_auto,c_limit,w_480,q_85"
+
+
+def image_url(product_data):
+    image = product_data.get("image")
+    return image.replace("__IMAGE_PARAMS__", IMAGE_PARAMS) if image else image
+
+
 # add today's price to the product's priceHistory subcollection
 # one document per day (id = date), so earlier days are never overwritten
 # and a retry later the same day just refreshes today's entry
@@ -118,7 +128,7 @@ def scrape(driver: Driver, data):
                     "displayed_price": product_data["offers"]["price"],
                     "currency": product_data["offers"]["priceCurrency"],
                     "product_url": product_url,
-                    "image_url": product_data.get("image"),
+                    "image_url": image_url(product_data),
                     "category": "Womenswear" if "/women/" in product_url else "Other",
                     "scraped_at": datetime.now(ZoneInfo("America/New_York")).isoformat()
                 }
@@ -245,7 +255,7 @@ def scrape(driver: Driver, data):
                 "displayed_price": product_data["offers"]["price"],
                 "currency": product_data["offers"]["priceCurrency"],
                 "product_url": product_data["url"],
-                "image_url": product_data.get("image"),
+                "image_url": image_url(product_data),
                 "category": "Womenswear" if "/women/" in product_data["url"] else "Other",
                 "scraped_at": datetime.now(ZoneInfo("America/New_York")).isoformat()
             }
