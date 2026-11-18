@@ -67,7 +67,7 @@ def save_price_history(doc_ref, product):
 # headless=False means you can see the browser
 # raise_exception + close_on_crash: on an error, exit with a failure instead of
 # pausing for Enter, so run_daily.sh sees it failed and retries on the next trigger
-@browser(headless=True, output=None, raise_exception=True, close_on_crash=True)
+@browser(headless=False, output=None, raise_exception=True, close_on_crash=True)
 def scrape(driver: Driver, data):
 
     # FIRST PATHWAY: UPLOAD FIRST TIME
