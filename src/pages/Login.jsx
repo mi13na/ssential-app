@@ -1,12 +1,27 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../auth";
+import { useState } from "react";
+import { useAuth } from "../auth/useAuth";
 import Spinner from "../Spinner";
 
 function Login() {
-  const { user, loading, signIn } = useAuth();
+  const { user, loading, signIn, isConfigured } = useAuth();
+  const [signInError, setSignInError] = useState("");
+  const [signingIn, setSigningIn] = useState(false);
 
   if (loading) return <Spinner />;
   if (user) return <Navigate to="/" replace />;
+
+  async function handleSignIn() {
+    setSignInError("");
+    setSigningIn(true);
+    try {
+      await signIn();
+    } catch (error) {
+      setSignInError(error.message);
+    } finally {
+      setSigningIn(false);
+    }
+  }
 
   return (
     <div className="flex h-screen items-center justify-center bg-neutral-500 p-4">
@@ -15,11 +30,22 @@ function Login() {
         <p className="mt-3 text-neutral-700">
           Browse clothing from SSENSE in one place and save your favorites to a wishlist.
         </p>
+        {!isConfigured && (
+          <p role="alert" className="mt-4 text-sm text-red-700">
+            Firebase is not configured. Add your Firebase web app settings to .env.local.
+          </p>
+        )}
+        {signInError && (
+          <p role="alert" className="mt-4 text-sm text-red-700">
+            Google sign-in failed: {signInError}
+          </p>
+        )}
         <button
-          onClick={() => signIn()}
-          className="mt-6 w-full cursor-pointer rounded bg-neutral-800 px-4 py-3 font-semibold text-white"
+          onClick={handleSignIn}
+          disabled={!isConfigured || signingIn}
+          className="mt-6 w-full cursor-pointer rounded bg-neutral-800 px-4 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Continue with Google
+          {signingIn ? "Connecting to Google..." : "Continue with Google"}
         </button>
       </div>
     </div>

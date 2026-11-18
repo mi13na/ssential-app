@@ -1,53 +1,40 @@
-// function Inventory() {
-//   return (
-//     <div>
-//       <h1 className="mb-4 text-3xl font-bold text-white">Inventory</h1>
-//       <p className="text-white">This is the inventory page.</p>
-//     </div>
-//   );
-// }
+import { useAuth } from "../auth/useAuth";
+import { useFirestoreCollection } from "../hooks/useFirestoreCollection";
 
-// export default Inventory;
-
-import ProductSkeleton from "../ProductSkeleton";
-
-function Inventory({ products, loading, error, purchasedIds }) {
-  const purchasedProducts = products.filter((product) =>
-    purchasedIds.includes(product.id)
+function Inventory() {
+  const { user, isConfigured } = useAuth();
+  const { documents, loading, error } = useFirestoreCollection(
+    user ? `users/${user.uid}/inventory` : null,
+    Boolean(user),
   );
 
-  let content;
-
-  if (loading) {
-    content = <ProductSkeleton />;
-  } else if (error) {
-    content = <p className="mx-auto max-w-5xl text-white">{error}</p>;
-  } else if (purchasedProducts.length === 0) {
-    content = (
-      <p className="mx-auto max-w-5xl text-white">
-        You haven't purchased anything yet. Items you buy will show up here.
-      </p>
-    );
-  } else {
-    content = (
-      <div className="mx-auto grid max-w-5xl grid-cols-4 gap-4">
-        {purchasedProducts.map((product) => (
-          <div key={product.id} className="overflow-hidden rounded bg-neutral-300">
-            <img src={product.image} alt="" className="aspect-square w-full object-cover" />
-            <p className="p-2 text-center font-semibold">{product.name}</p>
-            <p className="pb-2 text-center">{product.price}</p>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   return (
-    <>
-      <h2 className="mx-auto mb-4 max-w-5xl text-2xl font-bold text-white">Inventory</h2>
-
-      {content}
-    </>
+    <div>
+      <h1 className="mb-4 text-3xl font-bold text-white">Inventory</h1>
+      {!isConfigured ? (
+        <p className="text-white">Configure Firebase to load your inventory.</p>
+      ) : !user ? (
+        <p className="text-white">Sign in with Google to load your inventory.</p>
+      ) : loading ? (
+        <p className="text-white">Loading inventory...</p>
+      ) : error ? (
+        <p role="alert" className="text-red-100">
+          Could not load inventory: {error.message}
+        </p>
+      ) : documents.length === 0 ? (
+        <p className="text-white">No documents found in your inventory.</p>
+      ) : (
+        <ul className="space-y-3">
+          {documents.map(({ id, ...fields }) => (
+            <li key={id} className="rounded bg-white p-4">
+              <pre className="overflow-x-auto text-sm">
+                {JSON.stringify({ id, ...fields }, null, 2)}
+              </pre>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 

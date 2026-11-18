@@ -1,3 +1,5 @@
+import { formatProductPrice } from "./productUtils";
+
 function ProductModal({ product, onClose }) {
   if (!product) return null;
 
@@ -10,23 +12,31 @@ function ProductModal({ product, onClose }) {
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-md overflow-hidden rounded bg-white"
       >
-        <img src={product.image} alt={product.name} className="aspect-square w-full object-cover" />
+        {product.image ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="aspect-square w-full bg-white object-contain"
+          />
+        ) : (
+          <div className="flex aspect-square items-center justify-center bg-white text-neutral-600">
+            Image unavailable
+          </div>
+        )}
         <div className="p-4">
           <h2 className="text-2xl font-bold">{product.name}</h2>
-          <p className="mt-1 text-lg font-semibold">{product.price}</p>
-
-        {product.product_url && (
-          <a
-            href={product.product_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 inline-block text-sm text-blue-600 underline"
-          >
-            View on SSENSE
-          </a>
-        )}
-
-          <p className="mt-3 text-neutral-700">{product.description}</p>
+          <p className="mt-1 text-lg font-semibold">{formatProductPrice(product)}</p>
+          {product.description && <p className="mt-3 text-neutral-700">{product.description}</p>}
+          {product.product_url && (
+            <a
+              href={product.product_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-sm text-blue-600 underline"
+            >
+              View on SSENSE
+            </a>
+          )}
           <button
             onClick={onClose}
             className="mt-4 cursor-pointer rounded bg-neutral-800 px-4 py-2 text-white"
