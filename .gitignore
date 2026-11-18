@@ -1,6 +1,10 @@
 # Firebase credentials
 scraper/ssentialServiceKey.json
 
+# Local environment variables
+.env*
+!.env.example
+
 # Mac system files
 .DS_Store
 **/.DS_Store

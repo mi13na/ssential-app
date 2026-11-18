@@ -216,7 +216,8 @@
 
 // export default App;
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { deleteDoc, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import ProtectedRoute from "./ProtectedRoute";
@@ -224,68 +225,86 @@ import Shop from "./pages/Shop";
 import Inventory from "./pages/Inventory";
 import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
-import { fetchProducts } from "./products";
+import { useAuth } from "./auth/useAuth";
+import { db } from "./firebase";
+import { useFirestoreCollection } from "./hooks/useFirestoreCollection";
 
 function App() {
-  const [wishlist, setWishlist] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [purchasedIds, setPurchasedIds] = useState([]);
+  const [wishlistActionError, setWishlistActionError] = useState("");
+  const { user } = useAuth();
+  const {
+    documents: wishlistEntries,
+    loading: wishlistLoading,
+    error: wishlistReadErrorObject,
+  } = useFirestoreCollection(
+    user ? `users/${user.uid}/wishlist` : null,
+    Boolean(user),
+  );
+  const wishlist = wishlistEntries.map((entry) => entry.id);
+  const wishlistReadError = wishlistReadErrorObject?.message || "";
 
-  useEffect(() => {
-    fetchProducts()
-      .then((data) => setProducts(data))
-      .catch(() => setError("Something went wrong loading products. Please refresh and try again."))
-      .finally(() => setLoading(false));
-  }, []);
+  async function toggleWishlist(product) {
+    setWishlistActionError("");
+    if (!user || !db) {
+      setWishlistActionError("Sign in to save products to your wishlist.");
+      return;
+    }
 
-  function toggleWishlist(id) {
-    setWishlist((current) =>
-      current.includes(id)
-        ? current.filter((itemId) => itemId !== id)
-        : [...current, id]
-    );
+    const productId = String(product.product_id ?? product.id ?? "");
+    if (!productId) {
+      setWishlistActionError("This product is missing its product ID.");
+      return;
+    }
+
+    const wishlistDocument = doc(db, "users", user.uid, "wishlist", productId);
+    const alreadySaved = wishlistEntries.some((entry) => entry.id === productId);
+
+    try {
+      if (alreadySaved) {
+        await deleteDoc(wishlistDocument);
+      } else {
+        const savedPrice = Number(product.displayed_price ?? product.price);
+        if (!Number.isFinite(savedPrice)) {
+          setWishlistActionError("This product does not have a valid price to save.");
+          return;
+        }
+
+        await setDoc(wishlistDocument, {
+          saved_at: serverTimestamp(),
+          saved_price: savedPrice,
+          notify: true,
+        });
+      }
+    } catch (error) {
+      setWishlistActionError(error.message);
+    }
   }
 
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-
       <Route element={<Layout />}>
         <Route
           path="/"
           element={
             <Shop
-              products={products}
-              loading={loading}
-              error={error}
               wishlist={wishlist}
+              wishlistReadError={wishlistReadError}
+              wishlistActionError={wishlistActionError}
               toggleWishlist={toggleWishlist}
             />
           }
         />
-
         <Route element={<ProtectedRoute />}>
-          <Route
-            path="/inventory"
-            element={
-              <Inventory
-                products={products}
-                loading={loading}
-                error={error}
-                purchasedIds={purchasedIds}
-              />
-            }
-          />
+          <Route path="/inventory" element={<Inventory />} />
           <Route
             path="/wishlist"
             element={
               <Wishlist
-                products={products}
-                loading={loading}
-                error={error}
-                wishlist={wishlist}
+                wishlistEntries={wishlistEntries}
+                wishlistLoading={wishlistLoading}
+                wishlistReadError={wishlistReadError}
+                wishlistActionError={wishlistActionError}
                 toggleWishlist={toggleWishlist}
               />
             }

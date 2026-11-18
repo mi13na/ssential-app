@@ -65,12 +65,23 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "./auth";
+import Spinner from "./Spinner";
 
 function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [photoFailed, setPhotoFailed] = useState(false);
-  const { user, loading, signOut } = useAuth();
+  const [signInError, setSignInError] = useState("");
+  const { user, loading, authError, signOut, isConfigured } = useAuth();
+
+  async function handleAuth(action) {
+    setSignInError("");
+    try {
+      await action();
+    } catch (error) {
+      setSignInError(error.message);
+    }
+  }
 
   return (
     <div className="flex h-screen flex-col">
@@ -87,21 +98,25 @@ function Layout() {
 
         <h1 className="text-2xl font-bold text-white">ssential app</h1>
 
-        <div className="relative">
-          {loading ? (
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-white border-t-transparent"></div>
+        <div className="relative flex items-center gap-3">
+          {!isConfigured ? (
+            <Link
+              to="/login"
+              className="rounded bg-white px-4 py-2 text-sm font-semibold text-neutral-800"
+            >
+              Sign in
+            </Link>
+          ) : loading ? (
+            <Spinner />
           ) : user ? (
             <>
               <button
-                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                onClick={() => setUserMenuOpen((open) => !open)}
                 className="cursor-pointer"
                 aria-label="Account menu"
+                aria-expanded={userMenuOpen}
               >
-                {photoFailed ? (
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-xl font-bold text-neutral-800">
-                    {user.name[0]}
-                  </div>
-                ) : (
+                {user.photoURL && !photoFailed ? (
                   <img
                     src={user.photoURL}
                     alt="Profile"
@@ -109,17 +124,20 @@ function Layout() {
                     onError={() => setPhotoFailed(true)}
                     className="h-12 w-12 rounded-full object-cover"
                   />
+                ) : (
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-xl font-bold text-neutral-800">
+                    {(user.displayName || user.email || "U").charAt(0).toUpperCase()}
+                  </span>
                 )}
               </button>
-
               {userMenuOpen && (
                 <div className="absolute right-0 top-14 z-30 w-32 rounded bg-white py-1 shadow">
                   <button
                     onClick={() => {
                       setUserMenuOpen(false);
-                      signOut();
+                      handleAuth(signOut);
                     }}
-                    className="w-full cursor-pointer px-4 py-2 text-left hover:bg-neutral-200"
+                    className="w-full cursor-pointer px-4 py-2 text-left text-neutral-800 hover:bg-neutral-200"
                   >
                     Sign out
                   </button>
@@ -136,6 +154,12 @@ function Layout() {
           )}
         </div>
       </header>
+
+      {(authError || signInError) && (
+        <p role="alert" className="bg-red-100 px-4 py-2 text-sm text-red-800">
+          Firebase account action failed: {(authError || signInError).message}
+        </p>
+      )}
 
       {menuOpen && (
         <div

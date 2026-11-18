@@ -78,47 +78,95 @@
 
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard";
 import ProductModal from "../ProductModal";
 import ProductSkeleton from "../ProductSkeleton";
+import { useAuth } from "../auth/useAuth";
+import { useFirestoreCollection } from "../hooks/useFirestoreCollection";
+import { mapFirestoreProduct } from "../productUtils";
 
-function Shop({ products, loading, error, wishlist, toggleWishlist }) {
+function Shop({
+  wishlist,
+  wishlistReadError,
+  wishlistActionError,
+  toggleWishlist,
+}) {
   const [selected, setSelected] = useState(null);
-
-  let content;
-
-  if (loading) {
-    content = <ProductSkeleton />;
-  } else if (error) {
-    content = <p className="mx-auto max-w-5xl text-white">{error}</p>;
-  } else if (products.length === 0) {
-    content = <p className="mx-auto max-w-5xl text-white">No products yet.</p>;
-  } else {
-    content = (
-      <div className="mx-auto grid max-w-5xl grid-cols-4 gap-4">
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            image={product.image}
-            price={product.price}
-            isWishlisted={wishlist.includes(product.id)}
-            onToggleWishlist={() => toggleWishlist(product.id)}
-            onExpand={() => setSelected(product)}
-          />
-        ))}
-      </div>
-    );
-  }
+  const [searchQuery, setSearchQuery] = useState("");
+  const { user, loading: authLoading, isConfigured } = useAuth();
+  const {
+    documents,
+    loading: productsLoading,
+    error,
+  } = useFirestoreCollection("products", Boolean(user));
+  const products = documents.map(mapFirestoreProduct);
+  const loading = authLoading || (Boolean(user) && productsLoading);
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const filteredProducts = normalizedQuery
+    ? products.filter((product) =>
+        [product.name, product.brand, product.product_id, product.id, product.description]
+          .some((value) => String(value ?? "").toLowerCase().includes(normalizedQuery)),
+      )
+    : products;
 
   return (
     <>
       <input
-        type="text"
-        placeholder="Search..."
+        type="search"
+        aria-label="Search products"
+        placeholder="Search products by name or brand..."
+        value={searchQuery}
+        onChange={(event) => setSearchQuery(event.target.value)}
         className="mx-auto mb-4 block w-full max-w-5xl rounded bg-white p-2"
       />
 
-      {content}
+      {wishlistReadError && (
+        <p role="alert" className="mx-auto mb-4 max-w-5xl text-red-100">
+          Could not load wishlist: {wishlistReadError}
+        </p>
+      )}
+      {wishlistActionError && (
+        <p role="alert" className="mx-auto mb-4 max-w-5xl text-red-100">
+          Wishlist update failed: {wishlistActionError}
+        </p>
+      )}
+
+      {!isConfigured ? (
+        <p className="mx-auto max-w-5xl text-white">
+          Configure Firebase to load products and prices.
+        </p>
+      ) : loading ? (
+        <ProductSkeleton />
+      ) : !user ? (
+        <p className="mx-auto max-w-5xl text-white">
+          <Link to="/login" className="underline">Sign in with Google</Link> to load products and prices.
+        </p>
+      ) : error ? (
+        <p role="alert" className="mx-auto max-w-5xl text-red-100">
+          Could not load products: {error.message}
+        </p>
+      ) : products.length === 0 ? (
+        <p className="mx-auto max-w-5xl text-white">
+          No products found in the Firestore products collection.
+        </p>
+      ) : filteredProducts.length === 0 ? (
+        <p role="status" className="mx-auto max-w-5xl text-white">
+          No products match "{searchQuery.trim()}".
+        </p>
+      ) : (
+        <div className="mx-auto grid max-w-5xl grid-cols-4 gap-4">
+          {filteredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              isWishlisted={wishlist.includes(product.id)}
+              onToggleWishlist={() => toggleWishlist(product)}
+              onExpand={() => setSelected(product)}
+            />
+          ))}
+        </div>
+      )}
 
       <ProductModal product={selected} onClose={() => setSelected(null)} />
     </>

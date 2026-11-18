@@ -14,12 +14,23 @@
 
 
 import { Bookmark, Maximize2 } from "lucide-react";
+import { formatProductPrice } from "./productUtils";
 
-function ProductCard({ image, price, isWishlisted, onToggleWishlist, onExpand }) {
+function ProductCard({ product, isWishlisted, onToggleWishlist, onExpand }) {
   return (
     <div className="group flex flex-col overflow-hidden rounded bg-neutral-300">
-      <div className="relative">
-        <img src={image} alt="" className="aspect-square w-full object-cover" />
+      <div className="relative bg-white">
+        {product.image ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="aspect-square w-full bg-white object-contain"
+          />
+        ) : (
+          <div className="flex aspect-square items-center justify-center bg-white p-4 text-center text-sm text-neutral-600">
+            Image unavailable
+          </div>
+        )}
 
         <div className="absolute inset-0 flex items-center justify-center gap-4 bg-neutral-700/60 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <button
@@ -40,7 +51,9 @@ function ProductCard({ image, price, isWishlisted, onToggleWishlist, onExpand })
         </div>
       </div>
 
-      <p className="p-2 text-center font-semibold">{price}</p>
+      <p className="p-2 text-center font-semibold">
+        {formatProductPrice(product)}
+      </p>
     </div>
   );
 }
