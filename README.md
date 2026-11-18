@@ -15,6 +15,8 @@ The `/login` page signs in with Google. The Shop waits for an authenticated user
 
 Publish the rules in [firestore.rules](./firestore.rules) from **Firebase Console → Firestore Database → Rules**. Signed-in users can read products and their price history but cannot write either; users can read and write only their own `users/{uid}/...` documents. The Admin SDK scraper bypasses client rules. The Firebase web config is intended to be public; never put service-account credentials in this app or in a `VITE_` variable.
 
+The price history query also needs the index in `firestore.indexes.json`. Deploy the rules and index with `firebase deploy --only firestore:rules,firestore:indexes --project ssential-g4`, or create the index from the link shown in the Firestore query error.
+
 Wishlist items are stored at `users/{uid}/wishlist/{productId}` with `saved_at`, `saved_price`, and `notify: true`, so each user's saved products persist across sessions.
 
 Currently, two official plugins are available:
