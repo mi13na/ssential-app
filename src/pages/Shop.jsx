@@ -93,6 +93,7 @@ function Shop({
   toggleWishlist,
 }) {
   const [selected, setSelected] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
   const { user, loading: authLoading, isConfigured } = useAuth();
   const {
     documents,
@@ -101,12 +102,22 @@ function Shop({
   } = useFirestoreCollection("products", Boolean(user));
   const products = documents.map(mapFirestoreProduct);
   const loading = authLoading || (Boolean(user) && productsLoading);
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const filteredProducts = normalizedQuery
+    ? products.filter((product) =>
+        [product.name, product.brand, product.product_id, product.id, product.description]
+          .some((value) => String(value ?? "").toLowerCase().includes(normalizedQuery)),
+      )
+    : products;
 
   return (
     <>
       <input
-        type="text"
-        placeholder="Search..."
+        type="search"
+        aria-label="Search products"
+        placeholder="Search products by name or brand..."
+        value={searchQuery}
+        onChange={(event) => setSearchQuery(event.target.value)}
         className="mx-auto mb-4 block w-full max-w-5xl rounded bg-white p-2"
       />
 
@@ -139,9 +150,13 @@ function Shop({
         <p className="mx-auto max-w-5xl text-white">
           No products found in the Firestore products collection.
         </p>
+      ) : filteredProducts.length === 0 ? (
+        <p role="status" className="mx-auto max-w-5xl text-white">
+          No products match "{searchQuery.trim()}".
+        </p>
       ) : (
         <div className="mx-auto grid max-w-5xl grid-cols-4 gap-4">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
