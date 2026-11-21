@@ -13,24 +13,25 @@
 // export default ProductCard;
 
 
+import { useState } from "react";
 import { Bookmark, Maximize2 } from "lucide-react";
 import { formatProductPrice } from "./productUtils";
 
 function ProductCard({ product, isWishlisted, onToggleWishlist, onExpand }) {
+  const [failedImage, setFailedImage] = useState(null);
+  const image = typeof product.image === "string" ? product.image.trim() : "";
+
+  if (!image || image === failedImage) return null;
+
   return (
     <div className="group flex flex-col overflow-hidden rounded bg-neutral-300">
       <div className="relative bg-white">
-        {product.image ? (
-          <img
-            src={product.image}
-            alt={product.name}
-            className="aspect-square w-full bg-white object-contain"
-          />
-        ) : (
-          <div className="flex aspect-square items-center justify-center bg-white p-4 text-center text-sm text-neutral-600">
-            Image unavailable
-          </div>
-        )}
+        <img
+          src={image}
+          alt={product.name}
+          onError={() => setFailedImage(image)}
+          className="aspect-square w-full bg-white object-contain"
+        />
 
         <div className="absolute inset-0 flex items-center justify-center gap-4 bg-neutral-700/60 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <button
