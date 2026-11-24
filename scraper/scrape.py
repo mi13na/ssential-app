@@ -72,6 +72,12 @@ def save_price_history(doc_ref, product):
         "scraped_at": product["scraped_at"]
     })
 
+def save_price_drop(doc_ref, old_price, new_price, price_changed_at):
+    doc_ref.collection("priceDrops").add({
+        "old_price": old_price,
+        "new_price": new_price,
+        "price_changed_at": price_changed_at
+    })
 
 # open the browser, close it automatically once the function finishes
 # headless=False means you can see the browser
@@ -113,6 +119,7 @@ def scrape(driver: Driver, data):
 
                 product_data = json.loads(card)
                 product_url = product_data["url"]
+                product_id = str(product_data["productID"])
 
                 # Skip duplicates
                 if product_url in seen_urls:
@@ -122,15 +129,16 @@ def scrape(driver: Driver, data):
 
                 # Create product dictionary
                 product = {
-                    "product_id": product_data.get("productID") or product_url.rstrip("/").split("/")[-1],
+                    "product_id": product_id,
                     "brand": product_data["brand"]["name"],
                     "name": product_data["name"],
+                    "product_url": product_data["url"],
+                    "image_url": image_url(product_data),
                     "displayed_price": product_data["offers"]["price"],
                     "currency": product_data["offers"]["priceCurrency"],
-                    "product_url": product_url,
-                    "image_url": image_url(product_data),
-                    "category": "Womenswear" if "/women/" in product_url else "Other",
-                    "scraped_at": datetime.now(ZoneInfo("America/New_York")).isoformat()
+                    "scraped_at": datetime.now(
+                        ZoneInfo("America/New_York")
+                    ).isoformat()
                 }
 
                 # Add product to list
@@ -196,28 +204,28 @@ def scrape(driver: Driver, data):
 
 
     else:
-        # SECOND PATHWAY: EXTRACT FROM SAME URLs
+        # SECOND PATHWAY: UPDATE EXISTING PRODUCTS
 
         # Access products collection
         products_ref = db.collection("products")
 
         # Retrieve all product documents
-        # list() loads them all first so the connection doesn't stay open during the slow scraping
         products = list(products_ref.stream())
 
         print("Checking products in Firestore...")
 
         updated_count = 0
 
-        # Go through each product document
+        # Go through each product
         for product_doc in products:
 
             # Retrieve document ID and product information
             product_id = product_doc.id
             saved_data = product_doc.to_dict()
             product_url = saved_data["product_url"]
+            old_price = saved_data.get("displayed_price")
 
-            # Wait 3-5 seconds
+            # Wait before opening next product
             wait_time = random.randint(3, 5)
             print(f"Waiting {wait_time} seconds...")
             driver.sleep(wait_time)
@@ -232,13 +240,15 @@ def scrape(driver: Driver, data):
 
             print("Product page opened!")
 
-            # Retrieve product information from JSON-LD (pick the Product block)
+            # Extract product JSON-LD
             product_data = None
+
             for raw in driver.run_js(GET_ALL_JSON_LD):
                 try:
                     block = json.loads(raw)
                 except json.JSONDecodeError:
                     continue
+
                 if isinstance(block, dict) and block.get("@type") == "Product":
                     product_data = block
                     break
@@ -247,36 +257,78 @@ def scrape(driver: Driver, data):
                 print("No product data found on page. Skipping.")
                 continue
 
+            # Get updated price and currency
+            new_price = float(product_data["offers"]["price"])
+            new_currency = product_data["offers"]["priceCurrency"]
+
+            # Preserve previous price-drop date
+            price_dropped_at = saved_data.get("last_price_drop_at")
+
+            # Check whether the price decreased
+            if (
+                old_price is not None
+                and saved_data.get("currency") == new_currency
+                and new_price < float(old_price)
+            ):
+                price_dropped_at = datetime.now(
+                    ZoneInfo("America/New_York")
+                ).isoformat()
+
+                # Save price-drop event
+                save_price_drop(
+                    product_doc.reference,
+                    float(old_price),
+                    new_price,
+                    price_dropped_at
+                )
+
             # Create updated product dictionary
             product = {
                 "product_id": product_id,
                 "brand": product_data["brand"]["name"],
                 "name": product_data["name"],
                 "displayed_price": product_data["offers"]["price"],
-                "currency": product_data["offers"]["priceCurrency"],
+                "last_price_drop_at": price_dropped_at,
+                "currency": new_currency,
                 "product_url": product_data["url"],
                 "image_url": image_url(product_data),
-                "category": "Womenswear" if "/women/" in product_data["url"] else "Other",
-                "scraped_at": datetime.now(ZoneInfo("America/New_York")).isoformat()
+                "category": "Womenswear" if "/women/" in product_url else "Other",
+                "scraped_at": datetime.now(
+                    ZoneInfo("America/New_York")
+                ).isoformat()
             }
 
-            # Update the existing product document in Firestore
+            # Update Firebase product
             doc_ref = product_doc.reference
+
+            #delete these added fields aaaaah
+            doc_ref = product_doc.reference
+
+            doc_ref.update({
+                "color": firestore.DELETE_FIELD,
+                "description": firestore.DELETE_FIELD,
+                "materials": firestore.DELETE_FIELD,
+                "made_in": firestore.DELETE_FIELD,
+                "features": firestore.DELETE_FIELD,
+                "subcategory": firestore.DELETE_FIELD
+            })
+
             doc_ref.update(product)
 
-            # Add today's price to the price history
+            doc_ref.update(product)
+
+            # Save daily price history
             save_price_history(doc_ref, product)
 
             updated_count += 1
+
             print(f"Updated Firebase product: {product_id}")
 
         print(f"Updated {updated_count} of {len(products)} products.")
 
-        # nothing updated usually means no network or a block page
-        # fail so run_daily.sh retries instead of marking today done
         if updated_count == 0:
             raise RuntimeError("No products were updated.")
 
 
-# run the scraper
+# Run the scraper
 scrape()
