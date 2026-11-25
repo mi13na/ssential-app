@@ -66,6 +66,7 @@ import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "./auth";
 import Spinner from "./Spinner";
+import Collage from "./Collage";
 
 function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -189,7 +190,9 @@ function Layout() {
       </aside>
 
       <div className="flex flex-1 overflow-hidden">
-        <aside className="w-[30%] bg-white">{/* side bar */}</aside>
+        <aside className="relative w-[30%] overflow-hidden bg-white">
+            <Collage />
+          </aside>
 
         <main className="flex-1 overflow-y-auto bg-neutral-500 p-4">
           <Outlet />

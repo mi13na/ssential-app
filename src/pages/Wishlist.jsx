@@ -22,6 +22,7 @@ function Wishlist({
     error: productsError,
   } = useFirestoreCollection("products", Boolean(user));
   const products = documents.map(mapFirestoreProduct);
+  console.log(products[0]);
   const loading =
     authLoading || (Boolean(user) && (wishlistLoading || productsLoading));
   const savedProducts = wishlistEntries
